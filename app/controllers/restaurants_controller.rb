@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = Restaurant.new(restaurant_params)
-		@restaurant.capacity = 5
+		@restaurant.capacity = 100
 
 		if @restaurant.save
 			session[:restaurant_id] = @restaurant.id
@@ -44,7 +44,7 @@ class RestaurantsController < ApplicationController
 	private
 
 	def restaurant_params
-		params.require(:restaurant).permit(:name, :email, :password, :password_confirmation, :capacity, :address, :city, :province, :postal_code)
+		params.require(:restaurant).permit(:name, :email, :password, :password_confirmation, :address, :city, :province, :postal_code, :description)
 	end
 
 	def load_restaurant
