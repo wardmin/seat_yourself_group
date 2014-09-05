@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	restaurant = Restaurant.find_by(email: params[:id])
+  	restaurant = Restaurant.find_by(email: params[:email])
     if restaurant && restaurant.authenticate(params[:password])
-      session[:restaurant_id] = restaurant_id
+      session[:restaurant_id] = restaurant.id
       flash[:notice] = "You are logged in to OmNom.com!"
       redirect_to root_url
-    elsif customer = Customer.find_by(email: params[:id])
+    elsif customer = Customer.find_by(email: params[:email])
   	   if customer && customer.authenticate(params[:password])
-    		session[:customer_id] = customer_id
+    		session[:customer_id] = customer.id
     		flash[:notice] = "You are logged in to OmNom.com!"
     		redirect_to root_url
       end

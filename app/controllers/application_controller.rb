@@ -7,11 +7,13 @@ class ApplicationController < ActionController::Base
   def current_user
     if session[:customer_id]
       @current_user ||= Customer.find(session[:customer_id])
-    elsif 
+    elsif session[:restaurant_id]
       @current_user ||= Restaurant.find(session[:restaurant_id])
     else
+      @current_user == nil
     end
   end
+  helper_method :current_user
 
   def ensure_logged_in
     unless current_user
