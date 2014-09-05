@@ -1,0 +1,19 @@
+<h1>Log in to OmNom.com</h1>
+
+<%= form_tag sessions_path do %>
+
+  <div class = "field">
+    <%= label_tag :email %><br>
+    <%= text_field :email %>
+  </div>
+
+  <div class = "field">
+    <%= label_tag :password %><br>
+    <%= password_field :password %>
+  </div>
+
+  <div class = "actions">
+    <%= submit_tag "Log In" %><br>
+  </div>
+
+<% end %>
