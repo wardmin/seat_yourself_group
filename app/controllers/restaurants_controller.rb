@@ -17,6 +17,7 @@ class RestaurantsController < ApplicationController
 		@restaurant.capacity = 100
 
 		if @restaurant.save
+			session[:restaurant_id] = @restaurant.id
 			redirect_to restaurant_path(@restaurant), notice: "Let's make some food"
 		else
 			render :new, alert: "Something went wrong!!"
@@ -28,7 +29,7 @@ class RestaurantsController < ApplicationController
 
 	def update
 		if @restaurant.update(restaurant_params)
-			redirect_to restaurant_path(@restaurant), notice: "Information updated."
+			redirect_to restaurant_path(@restaurant), notice: "Profile updated."
 		else
 			render :edit, alert: "Something went wrong!!"
 		end
