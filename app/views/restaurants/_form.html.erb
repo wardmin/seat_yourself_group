@@ -1,12 +1,12 @@
 <%= form_for @restaurant do |f| %>
 	<p>
 	<%= f.label :name %> <br>
-	<%= f.text_area :name %>
+	<%= f.text_field :name %>
 	</p>
 	
 	<p>
 	<%= f.label :email %> <br>
-	<%= f.text_area :email %>
+	<%= f.email_field :email %>
 	</p>
 
 	<p>
@@ -26,22 +26,22 @@
 
 	<p>
 		<%= f.label :address %> <br>
-		<%= f.text_area :address %>
+		<%= f.text_field :address %>
 	</p>
 
 	<p>
 		<%= f.label :city %> <br>
-		<%= f.text_area :city %>
+		<%= f.text_field :city %>
 	</p>
 
 	<p>
 		<%= f.label :province %> <br>
-		<%= f.text_area :province %>
+		<%= f.text_field :province %>
 	</p>
 
 	<p>
 		<%= f.label :postal_code %> <br>
-		<%= f.text_area :postal_code %>
+		<%= f.text_field :postal_code %>
 	</p>
 
 	<p>
