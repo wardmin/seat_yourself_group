@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
   def destroy
   	session[:customer_id] = nil
     session[:restaurant_id] = nil
-  	redirect_to restaurants_url, notice: "You have logged out of OmNom.com."
+  	redirect_to restaurants_path, notice: "You have logged out of OmNom.com."
   end
 end

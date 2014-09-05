@@ -40,3 +40,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do
+	gem 'pry-rails'
+	gem 'better_errors'
+	gem 'quiet_assets'
+end
