@@ -35,7 +35,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def destroy
-		session[:user_id] = nil
+		session[:restaurant_id] = nil
 		@restaurant.destroy
 		redirect_to root_path, notice: "Sad to see you go!" 
 	end
