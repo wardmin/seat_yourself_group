@@ -8,9 +8,9 @@ class CustomersController < ApplicationController
 	 def create
 	  	@customer = Customer.new(customer_params)
 	  	if @customer.save
-	  		redirect_to customer_url(@customer)
+	  		redirect_to customer_path(@customer), notice: "Let's find some food!"
 	  	else
-	  		render :new
+	  		render :new, alert: "Something went wrong!!"
 	  	end
 	 end
 
@@ -21,6 +21,17 @@ class CustomersController < ApplicationController
 	 end
 
 	 def update
+	 	if @customer.update(customer_params)
+	 		redirect_to customer_path(@customer), notice: "Information updated."
+	 	else
+	 		render :edit, alert: "Something went wrong!!"
+	 	end
+	 end
+
+	 def destroy
+	 	session[:customer_id] = nil
+	 	@customer.destroy
+	 	redirect_to root_path, notice: "Sad to see you go!"
 	 	
 	 end
 
