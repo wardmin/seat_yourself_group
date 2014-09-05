@@ -3,7 +3,14 @@
 <p><%= @restaurant.city %>, <%= @restaurant.province %></p>
 <p><%= @restaurant.postal_code %></p>
 <p><%= @restaurant.phone_number %></p>
-<p><%= @restaurant.email %></p>
+<p><%= mail_to @restaurant.email, @restaurant.email %></p>
 <p><strong>Description:</strong> <%= @restaurant.description %></p>
 
-<p><%= link_to "Home", root_path %> | <%= link_to "Edit", edit_restaurant_path(@restaurant) %></p>
+<p><%= link_to "Home", root_path %> 
+
+	<% if current_user.id == @restaurant.id %>
+		| <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+	<% else %>
+		&nbsp;
+	<% end %>
+</p>
