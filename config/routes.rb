@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :restaurants
+  resources :customer, only: [:new, :create, :show, :update, :destroy]
 
   root "restaurants#index"
   

@@ -14,6 +14,7 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = Restaurant.new(restaurant_params)
+		@restaurant.capacity = 5
 
 		if @restaurant.save
 			redirect_to restaurant_path(@restaurant), notice: "Let's make some food"
