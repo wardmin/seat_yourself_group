@@ -14,8 +14,10 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = Restaurant.new(restaurant_params)
+		@restaurant.capacity = 100
 
 		if @restaurant.save
+			session[:restaurant_id] = @restaurant.id
 			redirect_to restaurant_path(@restaurant), notice: "Let's make some food"
 		else
 			render :new, alert: "Something went wrong!!"
@@ -27,14 +29,14 @@ class RestaurantsController < ApplicationController
 
 	def update
 		if @restaurant.update(restaurant_params)
-			redirect_to restaurant_path(@restaurant), notice: "Information updated."
+			redirect_to restaurant_path(@restaurant), notice: "Profile updated."
 		else
 			render :edit, alert: "Something went wrong!!"
 		end
 	end
 
 	def destroy
-		session[:user_id] = nil
+		session[:restaurant_id] = nil
 		@restaurant.destroy
 		redirect_to root_path, notice: "Sad to see you go!" 
 	end
@@ -42,7 +44,7 @@ class RestaurantsController < ApplicationController
 	private
 
 	def restaurant_params
-		params.require(:restaurant).permit(:name, :email, :password, :password_confirmation, :capacity, :address, :city, :province, :postal_code)
+		params.require(:restaurant).permit(:name, :email, :password, :password_confirmation, :address, :city, :province, :postal_code, :description)
 	end
 
 	def load_restaurant

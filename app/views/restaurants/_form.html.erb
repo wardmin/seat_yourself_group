@@ -20,11 +20,6 @@
 	</p>
 
 	<p>
-		<%= f.label :capacity %> <br>
-		<%= f.number_field :capacity %>
-	</p>
-
-	<p>
 		<%= f.label :address %> <br>
 		<%= f.text_field :address %>
 	</p>
@@ -46,7 +41,12 @@
 
 	<p>
 		<%= f.label :phone_number %> <br>
-		<%= f.number_field :phone_number %>
+		<%= f.telephone_field :phone_number %>
+	</p>
+
+	<p>
+		<%= f.label :description %> <br>
+		<%= f.text_area :description %>
 	</p>
 
 	<p><%= f.submit %></p>

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140905173746) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "customers", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 20140905173746) do
     t.datetime "start_date_time"
   end
 
-  add_index "reservations", ["customer_id"], name: "index_reservations_on_customer_id"
-  add_index "reservations", ["restaurant_id"], name: "index_reservations_on_restaurant_id"
+  add_index "reservations", ["customer_id"], name: "index_reservations_on_customer_id", using: :btree
+  add_index "reservations", ["restaurant_id"], name: "index_reservations_on_restaurant_id", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.string   "name"

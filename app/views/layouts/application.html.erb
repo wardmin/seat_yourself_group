@@ -8,6 +8,24 @@
 </head>
 <body>
 
+	<% if flash[:notice] %>
+		<p id="notice"><%= flash[:notice] %></p>
+	<% end -%>
+
+	<% if flash[:alert] %>
+		<p id="alert"><%= flash[:alert] %></p>
+	<% end -%>
+
+  <p class="user_info">
+  <% if current_user.is_a?(Customer) %>
+    Welcome, <%= link_to current_user.name.capitalize, customer_path(current_user) %>! <%= link_to "Log out", session_path("current"), :method => :delete %>
+    <% elsif current_user.is_a?(Restaurant) %>
+    Welcome, <%= link_to current_user.name.capitalize, restaurant_path(current_user) %>! <%= link_to "Log out", session_path("current"), :method => :delete %>
+    <% else %>
+    <%= link_to "Sign up to eat", new_customer_path %>  |  <%= link_to "Sign up a restaurant", new_restaurant_path %>  |  <%= link_to "Log in", new_session_path %>
+    <% end %>
+  </p>
+	
 <%= yield %>
 
 </body>
