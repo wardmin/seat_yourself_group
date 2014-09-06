@@ -2,9 +2,7 @@
 <p><%= @customer.email %></p>
 <p><%= link_to "Home", root_path %> 
 
-	<% if current_user.id == @customer.id && current_user.is_a?(Customer) %>
+	<% if current_user && current_user.id == @customer.id && current_user.is_a?(Customer) %>
 		| <%= link_to "Edit", edit_customer_path(@customer) %>
-	<% else %>
-		&nbsp;
 	<% end %>
 </p>
