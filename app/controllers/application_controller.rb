@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
       @current_user ||= Customer.find(session[:customer_id])
     elsif session[:restaurant_id]
       @current_user ||= Restaurant.find(session[:restaurant_id])
-    else
-      @current_user == nil
     end
   end
   helper_method :current_user
