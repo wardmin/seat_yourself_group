@@ -1,16 +1,25 @@
 <h1><%= @restaurant.name %></h1>
+
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.city %>, <%= @restaurant.province %></p>
 <p><%= @restaurant.postal_code %></p>
 <p><%= @restaurant.phone_number %></p>
 <p><%= mail_to @restaurant.email, @restaurant.email %></p>
+
+<p>
+	<strong>Cuisines</strong>
+	<ul>
+		<% for type in @restaurant.food_types %>	
+			<li><%= type.name %></li>
+		<% end -%>
+	</ul>
+</p>
+
 <p><strong>Description:</strong> <%= @restaurant.description %></p>
 
-<p><%= link_to "Home", root_path %> 
-
-	<% if current_user.id == @restaurant.id && current_user.is_a?(Restaurant) %>
+<p>
+	<%= link_to "Home", root_path %> 
+	<% if current_user && current_user.id == @restaurant.id && current_user.is_a?(Restaurant)%>
 		| <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
-	<% else %>
-		&nbsp;
 	<% end %>
 </p>

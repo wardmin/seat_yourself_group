@@ -49,5 +49,18 @@
 		<%= f.text_area :description %>
 	</p>
 
+	<p>
+		<%= f.label :food_types %> <br>
+		<!-- Returns a value of nil if all checkboxes cleared. Allows all categories to be cleared -->
+		<%= hidden_field_tag("restaurant[food_type_ids][]", nil) %>
+		<% FoodType.all.each do |type| %>
+			<label>
+				<!-- check_box_tag values: "put an array of food_type_ids into the restarant hash in params", checkbox value, should the box be already checked? -->
+				<%= check_box_tag "restaurant[food_type_ids][]", type.id, @restaurant.food_types.include?(type) %>
+				<%= type.name %>
+			</label>
+		<% end -%>
+	</p>
+
 	<p><%= f.submit %></p>
 <% end %>
