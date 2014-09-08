@@ -2,14 +2,23 @@ class ReservationsController < ApplicationController
 	
 	def create
 		@reservation = Reservation.new(reservation_params)
-		@reservation.customer = @current_user
-		@reservation.restaurant = Restaurant.find(params[:reservation[:restaurant_id]])
+		@reservation.customer = current_user
+
+		@restaurant = Restaurant.find(params[:restaurant_id])
+		@reservation.restaurant = @restaurant
 
 		if @reservation.save
-			redirect_to customer_path(@current_user), notice: "Reservation successful."
+			redirect_to customer_path(current_user), notice: "Reservation successful."
 		else
-			render 'restaurants/show', alert: "Something went wrong!!"
+			flash.now[:alert] = "Something went wrong!!"
+			render 'restaurants/show'
 		end
+	end
+
+	def destroy
+		reservation = Reservation.find(params[:id])
+		reservation.destroy
+		redirect_to customer_path(current_user), notice: "Reservation canceled."
 	end
 
 	private

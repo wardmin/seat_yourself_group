@@ -1,8 +1,6 @@
 class Reservation < ActiveRecord::Base
-	extend TimeSplitter::Accessors
-  	split_accessor :start_date_time
  	belongs_to :customer
-  	belongs_to :restaurant
+ 	belongs_to :restaurant
 
 	validates :customer_id, presence: true
 	validates :restaurant_id, presence: true
