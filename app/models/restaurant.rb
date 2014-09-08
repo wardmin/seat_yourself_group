@@ -14,6 +14,9 @@ class Restaurant < ActiveRecord::Base
   	reserved + party_size <= capacity
   end
 
+  mount_uploader :attachment, AttachmentUploader
+
+
   private
   def self.search(search)
     where("name LIKE ?", "%#{search}%")

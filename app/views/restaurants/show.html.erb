@@ -19,6 +19,7 @@
 <%= mail_to @restaurant.email, @restaurant.email %></p>
 </div>
 
+
 <h2>Make a Reservation at <%= @restaurant.name %></h2>
 <%= form_tag do %>
 	<p><%= label_tag :Date %><br />
@@ -26,6 +27,11 @@
 	<%= hidden_field_tag(:restaurant_id, @restaurant.id ) %></p>
 	<%= submit_tag "Make a Reservation!" %>
 <% end %>
+
+<div class="photos">
+	<img src="<%= @restaurant.attachment_url %>">
+</div>
+
 
 <p>
 	<%= link_to "Home", root_path %> 

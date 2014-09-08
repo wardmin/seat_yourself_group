@@ -12,6 +12,9 @@
 		</div>
 	<% end %>
 
+
+<%= form_for @restaurant, :html => {:multipart => true} do |f| %>
+
 	<p>
 	<%= f.label :name %> <br>
 	<%= f.text_field :name %>
@@ -73,6 +76,12 @@
 				<%= type.name %>
 			</label>
 		<% end -%>
+	</p>
+
+	<p>
+		<%= f.label :attachment %>
+		<%= f.file_field :attachment %>
+		<%= f.hidden_field :attachment_cache %>
 	</p>
 
 	<p><%= f.submit %></p>
