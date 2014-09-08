@@ -3,3 +3,16 @@
 <%= render "search" %>
 
 <%= render @restaurants %>
+
+
+<h3>Search for nearby restaurants:</h3>
+<%= form_tag restaurants_search_path, method: :post do %>
+  <%= label :location, "Enter your current location:" %> <br>
+  <%= text_field_tag :location, params[:location] %> <br>
+
+  <%= label :distance, "How far did you wanna go? (Distance in miles)" %> <br>
+  <%= text_field_tag :distance, params[:distance] %>  <br>
+
+  <%= submit_tag "Search" %>
+
+<% end -%>
