@@ -7,5 +7,11 @@ class Restaurant < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :email, presence: true
-  validates_uniqueness_of :email, :case_sensitive => false, :message => "That email is already taken."
+  #validates_uniqueness_of :email, :case_sensitive => false, :message => "That email is already taken."
+
+  private
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
+
 end
