@@ -16,6 +16,7 @@ class CustomersController < ApplicationController
 	 end
 
 	 def show
+	 	@reservations = @customer.reservations
 	 end
 
 	 def edit
