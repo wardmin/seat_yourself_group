@@ -32,6 +32,7 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'time_splitter'
+gem 'simple_form'
 
 # Use unicorn as the app server
 # gem 'unicorn'
