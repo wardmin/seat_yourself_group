@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+
+<p>
+<% if @restaurants.count > 0 %>
+  <%= render @restaurants %>
+<% else %>
+  Sorry, no restaurants match that search. Try again? 
+  <%= render "search" %>
+<% end %>
+</p>
+
+<%= link_to "Home", restaurants_path %>

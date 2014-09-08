@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # get 'customers/create'
   resources :sessions, only: [:new, :create, :destroy]
   resources :restaurants
+  post 'restaurants/search' => 'restaurants#search'
   resources :customers, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :reservations, only: [:create]
 

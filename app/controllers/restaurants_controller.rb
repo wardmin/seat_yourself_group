@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
 	before_action :load_restaurant, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@restaurants = Restaurant.all
+			@restaurants = Restaurant.all
 	end
 
 	def show
@@ -34,6 +34,10 @@ class RestaurantsController < ApplicationController
 		else
 			render :edit, alert: "Something went wrong!!"
 		end
+	end
+
+	def search
+		@restaurants = Restaurant.search(params[:search]).order("name ASC")
 	end
 
 	def destroy
