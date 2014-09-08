@@ -5,7 +5,16 @@ class Restaurant < ActiveRecord::Base
 
 	has_secure_password
 
+  geocoded_by :full_street_address # can also be an IP address
+  after_validation :geocode        # auto-fetch coordinates
+
+
 	validates :name, presence: true
 	validates :email, presence: true
   validates_uniqueness_of :email, :case_sensitive => false, :message => "That email is already taken."
+
+  def full_street_address
+    "#{address}, #{city}, #{province}, #{postal_code}"
+  end
+
 end
