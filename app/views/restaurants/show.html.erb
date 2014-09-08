@@ -34,9 +34,6 @@
 <% end %>
 
 
-
-
-
 <p>
 	<%= link_to "Home", root_path %> 
 	<% if current_user && current_user.id == @restaurant.id && current_user.is_a?(Restaurant)%>
