@@ -1,5 +1,16 @@
 <h2><%= link_to restaurant.name, restaurant %></h2>
+<p>
+  <ul>
+    <% restaurant.food_types.each do |type| %>
+      <li><%= type.name %><br></li>
+    <% end %>
+  </ul>
+</p>
+<p><%= restaurant.description %></p>
+
+<div class="contact_info">
 <p><%= restaurant.address %></p>
 <p><%= restaurant.city %>, <%= restaurant.province %></p>
 <p><%= restaurant.postal_code %></p>
 <p><%= restaurant.phone_number %></p>
+</div>
