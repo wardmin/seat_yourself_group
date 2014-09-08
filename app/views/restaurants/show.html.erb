@@ -20,13 +20,6 @@
 </div>
 
 <h2>Make a Reservation at <%= @restaurant.name %></h2>
-<%= simple_form_for @reservation do |f|%>
-	<p><%= f.label :Date %><br />
-	<%= f.datetime_select :start_date_time_date, discard_year: :true, discard_minute: :true %>
-
-</p>
-	<%= f.submit "Make a Reservation!" %>
-<% end %>
 
 
 <%= simple_form_for @reservation do |f| %>
