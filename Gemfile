@@ -36,6 +36,7 @@ gem 'simple_form'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem "geocoder"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
