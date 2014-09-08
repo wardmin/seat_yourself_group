@@ -1,7 +1,7 @@
 <h1>Search Results</h1>
 
 <p>
-<% if @restaurants.count > 0 %>
+<% if !@restaurants.empty? %>
   <%= render @restaurants %>
 <% else %>
   Sorry, no restaurants match that search. Try again? 

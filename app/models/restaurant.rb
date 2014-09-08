@@ -24,6 +24,7 @@ class Restaurant < ActiveRecord::Base
     "#{address}, #{city}, #{province}, #{postal_code}"
   end
 
+
   private
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
