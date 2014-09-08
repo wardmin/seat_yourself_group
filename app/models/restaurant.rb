@@ -9,6 +9,8 @@ class Restaurant < ActiveRecord::Base
 	validates :email, presence: true
   #validates_uniqueness_of :email, :case_sensitive => false, :message => "That email is already taken."
 
+  mount_uploader :attachment, AttachmentUploader
+
   private
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
