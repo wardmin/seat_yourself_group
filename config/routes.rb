@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # get 'customers/new'
 
   # get 'customers/create'
-  resources :customers
   resources :sessions, only: [:new, :create, :destroy]
   resources :restaurants
   resources :customers, only: [:new, :create, :show, :edit, :update, :destroy]
