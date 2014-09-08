@@ -1,5 +1,17 @@
 <h1><%= @customer.name %></h1>
 <p><%= @customer.email %></p>
+
+<h2><%= pluralize(@reservations.count, "Reservations") %></h2>
+
+<ul>
+	<% for reservation in @reservations %>
+		<li>
+			<%= link_to reservation.restaurant.name, reservation.restaurant %> for <%= reservation.start_date_time.strftime("%A, %B %e @ %l:%m %p") %>
+			 | <%= link_to "Cancel Reservation", reservation, method: :delete, data: { confirm: "Are you sure you want to cancel this reservation?"} %>
+		</li>
+	<% end -%>
+</ul>
+
 <p><%= link_to "Home", root_path %> 
 
 	<% if current_user && current_user.id == @customer.id && current_user.is_a?(Customer) %>

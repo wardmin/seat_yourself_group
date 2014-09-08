@@ -21,12 +21,19 @@
 
 
 <h2>Make a Reservation at <%= @restaurant.name %></h2>
-<%= form_tag do %>
-	<p><%= label_tag :Date %><br />
-	<%= select_datetime Date.today, prefix: :start_date, discard_year: :true, discard_minute: :true %>
-	<%= hidden_field_tag(:restaurant_id, @restaurant.id ) %></p>
-	<%= submit_tag "Make a Reservation!" %>
+
+<%= form_for @reservation do |f| %>
+	<%= hidden_field_tag :restaurant_id, @restaurant.id %>
+	<%= label_tag "Date" %>
+	<%= f.date_select :start_date_time %>
+	<%= label_tag "Time" %>
+	<%= f.time_select :start_date_time, discard_minute: :true %> <br>
+	
+	<%= f.label :party_size %>
+	<%= f.number_field :party_size %> <br>
+	<%= f.submit %>
 <% end %>
+
 
 <div class="photos">
 	<img src="<%= @restaurant.attachment_url %>">
