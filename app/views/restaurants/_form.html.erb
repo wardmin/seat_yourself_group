@@ -1,4 +1,17 @@
+
 <%= form_for @restaurant do |f| %>
+	<% if @restaurant.errors.any? %>
+		<div class="error-description">
+			<h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this information from being saved:</h2>
+
+			<ul>
+				<% @restaurant.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
 	<p>
 	<%= f.label :name %> <br>
 	<%= f.text_field :name %>
