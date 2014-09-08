@@ -9,6 +9,11 @@ class Restaurant < ActiveRecord::Base
 	validates :email, presence: true
   #validates_uniqueness_of :email, :case_sensitive => false, :message => "That email is already taken."
 
+  def available?(party_size, start_time)
+  	reserved = reservations.where(start_date_time: start_time).sum(:party_size)
+  	reserved + party_size <= capacity
+  end
+
   private
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
