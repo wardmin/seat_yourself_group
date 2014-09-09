@@ -5,18 +5,23 @@
 	<ul>
 		<% for type in @restaurant.food_types %>	
 			<li><%= type.name %></li>
-		<% end -%>
+		<% end %>
 	</ul>
 </p>
 
 <p><strong>Description:</strong> <%= @restaurant.description %></p>
 
 <div class="contact_info">
-<p><%= @restaurant.address %><br>
-<%= @restaurant.city %>, <%= @restaurant.province %><br>
-<%= @restaurant.postal_code %></p>
-<p><%= @restaurant.phone_number %><br>
-<%= mail_to @restaurant.email, @restaurant.email %></p>
+<p>
+  <% if !@restaurant.address.nil? %>
+    <%= @restaurant.full_street_address %>
+  <% end %>
+
+  <% if !@restaurant.area_code.nil? %>
+    <br><%= @restaurant.phone_number %>
+  <% end %><br>
+  <%= mail_to @restaurant.email, @restaurant.email %>
+</p>
 </div>
 
 
@@ -36,7 +41,7 @@
 
 
 <div class="photos">
-	<img src="<%= @restaurant.attachment_url %>">
+	<img src="<%= @restaurant.attachment_url %> " width="600">
 </div>
 
 

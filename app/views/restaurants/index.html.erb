@@ -1,9 +1,10 @@
 <h1>Find Your Food</h1>
 
+<p>
+<h3>Search by restaurant name</h3>
 <%= render "search" %>
 
-<%= render @restaurants %>
-
+<h5>OR</h5>
 
 <h3>Search for nearby restaurants:</h3>
 <%= form_tag restaurants_search_path, method: :post do %>
@@ -12,7 +13,11 @@
 
   <%= label :distance, "How far did you wanna go? (Distance in miles)" %> <br>
   <%= text_field_tag :distance, params[:distance] %>  <br>
-
   <%= submit_tag "Search" %>
+
+<%= render @restaurants %>
+
+
+
 
 <% end -%>

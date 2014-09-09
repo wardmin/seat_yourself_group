@@ -9,8 +9,13 @@
 <p><%= restaurant.description %></p>
 
 <div class="contact_info">
-<p><%= restaurant.address %><br>
-<%= restaurant.city %>, <%= restaurant.province %><br>
-<%= restaurant.postal_code %></p>
-<p><%= restaurant.phone_number %></p>
+<p>
+  <% if !restaurant.city.empty? %>
+    <%= restaurant.full_street_address %>
+  <% end %>
+  
+  <% if !restaurant.area_code.nil? %>
+    <br><%= restaurant.phone_number %>
+  <% end %>
+</p>
 </div>
