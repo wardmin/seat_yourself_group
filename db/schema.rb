@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 20140908211353) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
-    t.string   "attachment"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "attachment"
   end
 
 end
