@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
 
 		def show
 			@reservation = Reservation.new
+			@customer = Customer.find(session[:customer_id]) if session[:customer_id]
 
 			if current_user
 				@review = @restaurant.reviews.build

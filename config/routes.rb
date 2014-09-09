@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :restaurants do
-    resources :reviews, only: [:show, :create, :destroy]
+    resources :reviews, only: [:show, :create, :destroy], shallow: true
   end
   post 'restaurants/search' => 'restaurants#search'
   resources :customers, only: [:new, :create, :show, :edit, :update, :destroy]

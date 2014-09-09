@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_filter :load_restaurant
+  before_filter :load_restaurant, except: [:destroy]
   before_filter :ensure_logged_in, only: [:create, :destroy]
 
   def show
@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
+    redirect_to @review.restaurant, notice: "Review deleted!"
   end
 
   private
