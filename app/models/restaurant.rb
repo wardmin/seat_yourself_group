@@ -3,7 +3,7 @@ class Restaurant < ActiveRecord::Base
 	has_many :customers, through: :reservations
 	has_and_belongs_to_many :food_types
   has_many :reviews
-  has_many :customers, through: :reviews
+  has_many :customers, through: :reviewsphone_suffix
 
 	has_secure_password
 
@@ -26,6 +26,9 @@ class Restaurant < ActiveRecord::Base
     "#{address}, #{city}, #{province}, #{postal_code}"
   end
 
+  def phone_number
+    "(#{area_code}) #{phone_prefix}-#{phone_suffix}"
+  end
 
   private
   def self.search(search)

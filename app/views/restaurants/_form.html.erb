@@ -1,5 +1,5 @@
 
-<%= form_for @restaurant do |f| %>
+<%= form_for @restaurant, :html => {:multipart => true} do |f| %>
 	<% if @restaurant.errors.any? %>
 		<div class="error-description">
 			<h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this information from being saved:</h2>
@@ -11,9 +11,6 @@
 			</ul>
 		</div>
 	<% end %>
-
-
-<%= form_for @restaurant, :html => {:multipart => true} do |f| %>
 
 	<p>
 	<%= f.label :name %> <br>
@@ -56,8 +53,8 @@
 	</p>
 
 	<p>
-		<%= f.label :phone_number %> <br>
-		<%= f.telephone_field :phone_number %>
+		<%= f.label "Phone number" %> <br>
+		(<%= f.text_field :area_code %>) <%= f.text_field :phone_prefix %>-<%= f.text_field :phone_suffix %>
 	</p>
 
 	<p>
@@ -81,7 +78,6 @@
 	<p>
 		<%= f.label :attachment %>
 		<%= f.file_field :attachment %>
-		<%= f.hidden_field :attachment_cache %>
 	</p>
 
 	<p><%= f.submit %></p>
