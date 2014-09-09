@@ -4,6 +4,7 @@ class Restaurant < ActiveRecord::Base
 	has_and_belongs_to_many :food_types
   has_many :reviews
   has_many :customers, through: :reviewsphone_suffix
+  has_one :gallery
 
 	has_secure_password
 
