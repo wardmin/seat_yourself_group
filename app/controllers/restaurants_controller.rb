@@ -7,6 +7,10 @@ class RestaurantsController < ApplicationController
 
 		def show
 			@reservation = Reservation.new
+
+			if current_user
+				@review = @restaurant.reviews.build
+			end
 		end
 
 		def new

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :restaurants
+  resources :restaurants do
+    resources :reviews, only: [:show, :create, :destroy]
+  end
   post 'restaurants/search' => 'restaurants#search'
   resources :customers, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :reservations, only: [:create, :destroy]
